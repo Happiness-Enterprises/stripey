@@ -1,0 +1,15 @@
+# IDE files
+*.swp
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# SQLite files
+*.sqlite*
+
+# Other file types
+*.tgz
+*.tar*
+*.zip

@@ -1,0 +1,25 @@
+[project]
+name = "happiness-utils"
+dynamic = ["version"]
+authors = [
+  { name = "William Grim", email = "490007+grimwm@users.noreply.github.com" },
+]
+description = "Common utility methods."
+requires-python = ">=3.10"
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
+]
+readme = "README.md"
+
+dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "__about__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/happiness/utils"]
