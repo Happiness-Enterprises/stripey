@@ -22,4 +22,4 @@ build-backend = "hatchling.build"
 path = "__about__.py"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/happiness/utils"]
+packages = ["src/happiness"]
