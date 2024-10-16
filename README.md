@@ -27,7 +27,7 @@ Create `${HOME}/.config/pip/pip.conf` with the following contents:
 
 ```ini
 [global]
-extra-index-urls = https://pypi.happystl.com/simple/
+index-url = https://pypi.happystl.com/simple/
 ```
 
 Create `${HOME}/.netrc` with the following contents:
@@ -37,3 +37,9 @@ Create `${HOME}/.netrc` with the following contents:
     password <password>
 
 Make sure you set the file permissions correctly e.g. `chmod 0600 "${HOME}/.netrc"`.
+
+Once the `pip.conf` and `.netrc` files are ready, simply run installations as you normally would. For example:
+
+```sh
+pip install happy-common-utils
+```
