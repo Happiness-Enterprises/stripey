@@ -1,7 +1,7 @@
 """Utilities common to Django applications."""
 from typing import Any, Callable, List
 
-from happiness.utils.exceptions import PermissionCheckError
+from happy.utils.exceptions import PermissionCheckError
 
 
 def check_permission(

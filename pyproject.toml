@@ -1,5 +1,5 @@
 [project]
-name = "happiness-utils"
+name = "happy-common-utils"
 dynamic = ["version"]
 authors = [
   { name = "William Grim", email = "490007+grimwm@users.noreply.github.com" },
@@ -22,4 +22,4 @@ build-backend = "hatchling.build"
 path = "__about__.py"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/happiness"]
+packages = ["src/happy"]
