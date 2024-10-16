@@ -12,12 +12,12 @@ By default, `build.sh` builds code in `dev` mode, which means any version tags h
 
 Create `${HOME}/.pypirc` with the following contents:
 
-    ```ini
-    [pypi]
-    repository = https://pypi.happystl.com/
-    username = <username>
-    password = <password>
-    ```
+```ini
+[pypi]
+repository = https://pypi.happystl.com/
+username = <username>
+password = <password>
+```
 
 Make sure you set the file permissions correctly e.g. `chmod 0600 "${HOME}/.pypirc"`. Then you can use the `publish.sh` script to push any of your builds to the pypi repo.
 
@@ -25,10 +25,10 @@ Make sure you set the file permissions correctly e.g. `chmod 0600 "${HOME}/.pypi
 
 Create `${HOME}/.config/pip/pip.conf` with the following contents:
 
-    ```ini
-    [global]
-    extra-index-urls = https://pypi.happystl.com/simple/
-    ```
+```ini
+[global]
+extra-index-urls = https://pypi.happystl.com/simple/
+```
 
 Create `${HOME}/.netrc` with the following contents:
 
