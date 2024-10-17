@@ -2,6 +2,10 @@
 
 This is a collection of utility methods and classes that are helpful across an array of Python projects.
 
+# Setup
+
+Setting up for development is simple using the `setup.sh` script. It will create a virtual environment and tell you how to activate it.
+
 # Build
 
 To perform a build, just run the `build.sh` script. To change any build settings, modify `pyproject.toml`.
