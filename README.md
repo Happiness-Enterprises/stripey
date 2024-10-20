@@ -27,6 +27,18 @@ Make sure you set the file permissions correctly e.g. `chmod 0600 "${HOME}/.pypi
 
 # Install
 
+Install the package as either a live-edit installation or a normal installation. If you would like to try one mode and then another, please uninstall first.
+
+## Live-Edit Installation
+
+If you are a developer, you will want to install this package in live-edit mode. This is like installing the package in the normal way, except any changes performed in the package are reflected immediately by any code that does `import my_pkg`. Simply run:
+
+```sh
+pip install -e .
+```
+
+## Normal Installation
+
 Create `${HOME}/.config/pip/pip.conf` with the following contents:
 
 ```ini
@@ -42,7 +54,7 @@ Create `${HOME}/.netrc` with the following contents:
 
 Make sure you set the file permissions correctly e.g. `chmod 0600 "${HOME}/.netrc"`.
 
-Once the `pip.conf` and `.netrc` files are ready, simply run installations as you normally would. For example:
+Once the `pip.conf` and `.netrc` files are ready, install the package normally:
 
 ```sh
 pip install happy-common-utils
