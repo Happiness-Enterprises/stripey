@@ -12,7 +12,10 @@ classifiers = [
 ]
 readme = "README.md"
 
-dependencies = []
+dependencies = ["python-dotenv>=1.0,<2", "stripe>=11,<12"]
+
+[project.scripts]
+stripey = "happy.scripts.stripey:main"
 
 [build-system]
 requires = ["hatchling"]
