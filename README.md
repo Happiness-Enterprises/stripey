@@ -58,4 +58,4 @@ At this time, `Stripey` only supports one use-case: payment link creation.
 
 The basic usage of `Stripey` for [PaymentLink creation](https://docs.stripe.com/api/payment-link/create) is as follows:
 
-![image](usage-1.png)
+![image](usage-plink-create.png)

@@ -111,11 +111,16 @@ def choose_bool(prompt: str, default: bool = False) -> bool:
     return value.startswith("y")
 
 
+def account_display_name_id(account: stripe.Account) -> str:
+    """Convenience method to display :class:`stripe.Account` names and their ids."""
+    return f"{account.business_profile.name} ({account.id})"
+
+
 def choose_account(accounts: list[stripe.Account]) -> stripe.Account:
     """Allow user to interactively select an :class:`stripe.Account`."""
     print("Please select an account:")
     for idx, account in enumerate(accounts):
-        print(f"  {idx+1}. {account.business_profile.name} ({account.id})\n")
+        print(f"  {idx+1}. {account_display_name_id(account)}\n")
     return select_item_index(accounts)
 
 
@@ -124,6 +129,7 @@ def choose_product(
 ) -> stripe.Product:
     """Allow user to interactively select a :class:`stripe.Product`."""
     print(f"Please select one of {account.business_profile.name}'s products:")
+    products = [product for product in products if product.active]
     for idx, product in enumerate(products):
         if not product.active:
             continue
@@ -185,7 +191,7 @@ def main():
     accounts = stripe.Account.list()
     account = choose_account(accounts.data)
     STRIPE_KWARGS["stripe_account"] = account.id
-    print(f"\nUsing connected account: {account.id}.\n")
+    print(f"\nUsing connected account: {account_display_name_id(account)}.\n")
 
     products = stripe.Product.list(**STRIPE_KWARGS)
     product = choose_product(account, products.data)
