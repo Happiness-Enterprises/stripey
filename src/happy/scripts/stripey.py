@@ -125,6 +125,8 @@ def choose_product(
     """Allow user to interactively select a :class:`stripe.Product`."""
     print(f"Please select one of {account.business_profile.name}'s products:")
     for idx, product in enumerate(products):
+        if not product.active:
+            continue
         price = stripe.Price.retrieve(product.default_price, **STRIPE_KWARGS)
         livemode = "LIVE" if product.livemode else "TEST"
         print(
