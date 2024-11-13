@@ -1,6 +1,6 @@
 # Stripey
 
-This is a collection of utility methods and classes that are helpful in working with [Stripe](https://stripe.com/).
+This is a collection of code that is helpful in working with [Stripe](https://stripe.com/).
 
 # Setup
 
