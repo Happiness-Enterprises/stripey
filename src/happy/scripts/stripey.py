@@ -71,6 +71,7 @@ def select_item_index(items: list) -> any:
 
 
 def choose_int(prompt: str, default: int = None) -> int:
+    """Allow user to interactively enter an `int`."""
     value = None
     if default is not None:
         prompt = f"{prompt} ({default})"
@@ -86,6 +87,7 @@ def choose_int(prompt: str, default: int = None) -> int:
 
 
 def choose_float(prompt: str, default: float = None) -> float:
+    """Allow user to interactively enter a `float`."""
     value = None
     if default is not None:
         prompt = f"{prompt} ({default})"
@@ -101,6 +103,7 @@ def choose_float(prompt: str, default: float = None) -> float:
 
 
 def choose_bool(prompt: str, default: bool = False) -> bool:
+    """Allow user to interactively enter a `bool`."""
     options = "[y]/n" if default else "y/[n]"
     value = input(f"{prompt} ({options})? ").lower()
     if not value:
@@ -136,17 +139,31 @@ def choose_product(
     return select_item_index(products)
 
 
-def create_payment_link(**kwargs) -> stripe.PaymentLink:
+def create_payment_link(
+    product: stripe.Product,
+    quantity: int,
+    adjustable_quantity: bool = False,
+    application_fee_percent: float = 0.0,
+    allow_promotion_codes: bool = False,
+    collect_phone_numbers: bool = False,
+    automatic_tax: bool = False,
+) -> stripe.PaymentLink:
     """Create a :class:`stripe.PaymentLink`."""
     return stripe.PaymentLink.create(
         **STRIPE_KWARGS,
         line_items=[
             {
-                "price": "price_1QJQweHhPlF00wZxeWF3Lh7p",
-                "quantity": 1,
-            }
+                "price": product.default_price,
+                "quantity": quantity,
+                "adjustable_quantity": {
+                    "enabled": adjustable_quantity,
+                },
+            },
         ],
-        application_fee_percent=3.0,
+        application_fee_percent=application_fee_percent,
+        allow_promotion_codes=allow_promotion_codes,
+        phone_number_collection={"enabled": collect_phone_numbers},
+        automatic_tax={"enabled": automatic_tax},
     )
 
 
@@ -185,21 +202,14 @@ def main():
     automatic_tax = choose_bool(
         "Automatically collect taxes from customer", STRIPE_AUTOMATIC_TAX
     )
-    payment_link = stripe.PaymentLink.create(
-        **STRIPE_KWARGS,
-        line_items=[
-            {
-                "price": product.default_price,
-                "quantity": quantity,
-                "adjustable_quantity": {
-                    "enabled": adjustable_quantity,
-                },
-            },
-        ],
+    payment_link = create_payment_link(
+        product,
+        quantity,
+        adjustable_quantity=adjustable_quantity,
         application_fee_percent=application_fee_percent,
         allow_promotion_codes=allow_promotion_codes,
-        phone_number_collection={"enabled": collect_phone_numbers},
-        automatic_tax={"enabled": automatic_tax},
+        collect_phone_numbers=collect_phone_numbers,
+        automatic_tax=automatic_tax,
     )
 
     mode = "LIVE" if payment_link.livemode else "TEST"
