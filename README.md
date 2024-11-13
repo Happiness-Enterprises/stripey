@@ -35,3 +35,27 @@ NOTE: THIS IS NOT YET IN PYPI.
 <!-- ```sh
 pip install happy-common-utils
 ``` -->
+
+# Usage
+
+Before you can being using `Stripey`, you need a properly configured environment. `Stripey` understands env files, and if you want to use one, you can call it anything you want. `Stripey` looks for `.env` in your current working directory, but you can override it with the `-e` or `--env` parameter.
+
+If you do not want to use env files, no problem. You will, however, need to modify your system environment to contain the following variables:
+
+| Key                              | Value             | Default | Required |
+| -------------------------------- | ----------------- | ------- | -------- |
+| `STRIPE_KEY`                     | `<api key>`       |         | *        |
+| `STRIPE_ADJUSTABLE_QUANTITY`     | `true` or `false` | `false` |          |
+| `STRIPE_ALLOW_PROMOTION_CODES`   | `true` or `false` | `false` |          |
+| `STRIPE_APPLICATION_FEE_PERCENT` | `0.00 - 100.00`   | `0`     |          |
+| `STRIPE_AUTOMATIC_TAX`           | `true` or `false` | `false` |          |
+| `STRIPE_COLLECT_PHONE_NUMBERS`   | `true` or `false` | `false` |          |
+| `STRIPE_QUANTITY`                | `>= 1`            | `1`     |          |
+
+At this time, `Stripey` only supports one use-case: payment link creation.
+
+## Payment Link Creation
+
+The basic usage of `Stripey` for [PaymentLink creation](https://docs.stripe.com/api/payment-link/create) is as follows:
+
+![image](usage-1.png)
