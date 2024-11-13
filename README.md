@@ -1,6 +1,6 @@
-# Common Utility Methods
+# Stripey
 
-This is a collection of utility methods and classes that are helpful across an array of Python projects.
+This is a collection of utility methods and classes that are helpful in working with [Stripe](https://stripe.com/).
 
 # Setup
 
@@ -14,16 +14,7 @@ By default, `build.sh` builds code in `dev` mode, which means any version tags h
 
 # Publish
 
-Create `${HOME}/.pypirc` with the following contents:
-
-```ini
-[pypi]
-repository = https://pypi.happystl.com/
-username = <username>
-password = <password>
-```
-
-Make sure you set the file permissions correctly e.g. `chmod 0600 "${HOME}/.pypirc"`. Then you can use the `publish.sh` script to push any of your builds to the pypi repo.
+You can use the `publish.sh` script to push any of your builds to the pypi repo.
 
 # Install
 
@@ -39,23 +30,8 @@ pip install -e .
 
 ## Normal Installation
 
-Create `${HOME}/.config/pip/pip.conf` with the following contents:
+NOTE: THIS IS NOT YET IN PYPI.
 
-```ini
-[global]
-index-url = https://pypi.happystl.com/simple/
-```
-
-Create `${HOME}/.netrc` with the following contents:
-
-    machine pypi.happystl.com
-    login <username>
-    password <password>
-
-Make sure you set the file permissions correctly e.g. `chmod 0600 "${HOME}/.netrc"`.
-
-Once the `pip.conf` and `.netrc` files are ready, install the package normally:
-
-```sh
+<!-- ```sh
 pip install happy-common-utils
-```
+``` -->
